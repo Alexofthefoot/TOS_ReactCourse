@@ -47,7 +47,6 @@ function updatePage(book) {
     newDiv.appendChild(newP);
     //delete button
     var button = document.createElement("button")
-    // button.id = "button"+ NUM_BOOKS;
     button.innerHTML = "Remove"
     button.type = "button"
     button.onclick = removeParent;
@@ -58,14 +57,22 @@ function displayForm() {
     document.getElementById('form-container').style.display = 'block';
 }
 
+function hideForm() {
+    document.getElementById('form-container').style.display = 'none';
+}
+
 function removeParent(button) {
     this.parentNode.remove();
 }
 
-function submitForm() {
-    // addBookToLibrary()
-    document.getElementById('form-container').style.display = 'none';
-}
+document.getElementById("new-book").addEventListener("submit", submitForm);
+
+    async function submitForm(event) {
+      event.preventDefault();
+      addBookToLibrary(document.getElementById("title").value, document.getElementById("author").value, document.getElementById("pages").value, document.getElementById("read").value)
+      //clear form
+    }
+
 
 function addBookToLibrary(title, author, numPages, isRead) {
     var book = new Book(title, author, numPages, isRead)
@@ -73,10 +80,3 @@ function addBookToLibrary(title, author, numPages, isRead) {
     updatePage(book)
   }
   
-  
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
-addBookToLibrary("Harry Potter", "J.K. Rowling", 342, true);
-
-
-
-

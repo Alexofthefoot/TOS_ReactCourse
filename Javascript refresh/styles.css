@@ -29,9 +29,9 @@ button {
 .card button, .card p {
     display: inline;
 }
-.card button {
-    justify-content: right;
-}
+/* .card button {
+     justify-content: right; 
+} */
 
 #form-container {
     display: none;

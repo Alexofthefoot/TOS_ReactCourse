@@ -10,15 +10,25 @@
 </head>
 
 <body>
-    <div id="library-container"></div>
+    <div id="library-container">
+        <div class="card">
+            <p>The Hobbit written by J.R.R Tolkien has 295 pages and has not been read.</p>
+            <button type="button">Remove</button>
+        </div>
+        <div class="card">
+            <p>Harry Potter written by J.K. Rowling has 309 pages and has been read.</p>
+            <button type="button">Remove</button>
+        </div>
+    </div>
     <button type="button" onclick="displayForm()">New Book</button>
     <div id="form-container">
-        <form id="new-book" action="book.js">
+        <form id="new-book">
             <label for="title">Title here</label><input type="text" id="title">
             <label for="author">Author name here</label><input type="text" id="author">
             <label for="pages">Number of pages</label><input type="number" id="pages">
             <label for="read">Have you read this book?</label><input type="checkbox" id="read">
             <button type="submit">Submit</button>
+            <button type="button" onclick="hideForm()">Hide</button>
         </form>
     </div>
 </body>
