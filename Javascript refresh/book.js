@@ -62,7 +62,7 @@ function hideForm() {
 }
 
 function removeParent(button) {
-    this.parentNode.remove();
+    button.parentNode.remove();
 }
 
 document.getElementById("new-book").addEventListener("submit", submitForm);
@@ -70,7 +70,7 @@ document.getElementById("new-book").addEventListener("submit", submitForm);
     async function submitForm(event) {
       event.preventDefault();
       addBookToLibrary(document.getElementById("title").value, document.getElementById("author").value, document.getElementById("pages").value, document.getElementById("read").value)
-      //clear form
+      document.getElementById("new-book").reset();
     }
 
 
