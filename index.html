@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="book.js"></script> <!-- it will load after the body -->
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="library-container"></div>
+    <button type="button" onclick="displayForm()">New Book</button>
+    <div id="form-container">
+        <form id="new-book" action="book.js">
+            <label for="title">Title here</label><input type="text" id="title">
+            <label for="author">Author name here</label><input type="text" id="author">
+            <label for="pages">Number of pages</label><input type="number" id="pages">
+            <label for="read">Have you read this book?</label><input type="checkbox" id="read">
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
