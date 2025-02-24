@@ -6,20 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="book.js"></script> <!-- it will load after the body -->
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>Library</title>
 </head>
 
 <body>
-    <div id="library-container">
-        <div class="card">
-            <p>The Hobbit written by J.R.R Tolkien has 295 pages and has not been read.</p>
-            <button type="button" onclick="removeParent(this)">Remove</button>
-        </div>
-        <div class="card">
-            <p>Harry Potter written by J.K. Rowling has 309 pages and has been read.</p>
-            <button type="button" onclick="removeParent(this)">Remove</button>
-        </div>
-    </div>
+    <div id="library-container"></div>
     <button type="button" onclick="displayForm()">New Book</button>
     <div id="form-container">
         <form id="new-book">
