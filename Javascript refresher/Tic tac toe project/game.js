@@ -9,14 +9,14 @@ const GAME_OBJECT = (function () {
     const setSymbol = (symbol) => { computerSymbol = symbol }
     const alterBoard = (pos, symbol) => { board[pos] = symbol; }
     const takeTurn = () => {
-        let turn = strategize();
-        alterBoard(turn, computerSymbol)
-        UIController.computerTurn(turn, computerSymbol);
+        let choice = strategize();
+        alterBoard(choice, computerSymbol)
+        UIController.computerTurn(choice);
         console.log(board)
         if (isGameFinished()) {
             //reset board
             board = ["", "", "", "", "", "", "", "", ""];
-            // reset css
+            // reset css to play again
             UIController.finishGame(); 
         }
     }
@@ -28,9 +28,11 @@ const GAME_OBJECT = (function () {
                 return i; 
             }
         }
+        console.log("problem with strategy")
     }
+
     let isGameFinished = () => {
-        // TODO put in more than one win condition lol
+        // TODO: put in more than one win condition lol
         if (board[0] == board[1] && board[1] == board[2] && board[2] != ""){
             console.log(board[0], board[1], board[2])
             console.log("returning true")
@@ -100,7 +102,7 @@ const UIController = (function () {
         if (event.target.innerHTML == '') {
             event.target.innerHTML = PLAYER.getSymbol();
             GAME_OBJECT.alterBoard(event.target.id, PLAYER.getSymbol())
-            // tell computer to take turn
+            // tell computer to take its turn
             GAME_OBJECT.takeTurn();
         }
         else {
@@ -110,6 +112,8 @@ const UIController = (function () {
 
     const computerTurn = (pos) => {
         let button = document.getElementById(pos);
+        console.log("pos is", pos)
+        console.log("computer is ", GAME_OBJECT.getSymbol())
         button.innerHTML = GAME_OBJECT.getSymbol();
     }
 
@@ -128,9 +132,10 @@ const UIController = (function () {
         const header = document.getElementById('user_instruction');
         header.innerHTML = "Game over! Play again?"
         const formContainer = document.getElementById('form_container');
-        formContainer.style.display = 'flex;';
+        formContainer.style.display = 'flex';
         const board = document.getElementById('game_container');
         board.style.display = 'none';
+        
         
     }
 
