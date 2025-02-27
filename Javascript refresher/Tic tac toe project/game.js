@@ -9,9 +9,9 @@ const GAME_OBJECT = (function () {
 const PLAYER = (function () {
     let playerName;
     let playerSymbol;
-    const getName = () => {playerName}
+    const getName = () => {return playerName}
     const setName = (name) => {playerName = name}
-    const getSymbol = () => {playerSymbol}
+    const getSymbol = () => {return playerSymbol}
     const setSymbol = (symbol) => {playerSymbol = symbol}
 
     return {getName, setName, getSymbol, setSymbol}
@@ -25,28 +25,37 @@ const UIController = (function () {
                         button.addEventListener('click', buttonPress);
                     }
                 
-                })}    //private, is called inside the controller
+                })}
 
     const initForm = () => {
         let form = document.getElementById('player_info');
-        form.onsubmit = function(event) {
-            event.preventDefault();
-            // vertify form input
-            // if (something) {
+        form.addEventListener('submit', formSubmit);
+    }
 
-            // }
-            // else {
-            //     let warning = document.getElementById('user_message')
-            //     warning.style.display = 'inline';
+    const formSubmit = (event) => {
+        event.preventDefault();
+        const name = document.getElementById("playerName");
+        const symbolX = document.getElementById("optionX").checked;
+        const symbolO = document.getElementById("optionO").checked;
+        // verify user inputs
+        if ((symbolX || symbolO) && name != null) {
+            PLAYER.setName(name.value);
+            console.log("O is ", symbolO,"X is", symbolX)
+            if (symbolX) {
+                PLAYER.setSymbol('X');
+            }
+            else {PLAYER.setSymbol('O');}
+            console.log("Player is now named ", PLAYER.getName() , "with a symbol of ", PLAYER.getSymbol())
+            hideForm();
+            revealBoard();
+        }
+        else {
+            let warning = document.getElementById('user_message')
+            warning.style.display = 'inline';
 
-            // }
-            document.getElementById('user_message').style.display = 'inline';
-            console.log('press')
-            // PLAYER.setName(form.name);
-            // console.log(PLAYER.getName())
-            // PLAYER.setSymbol();
-            // event.preventDefault();
-          };
+        }
+        document.getElementById('user_message').style.display = 'inline';
+        console.log('press')
     }
 
     const buttonPress = (event) => {    //private, but accessible by the buttons themselves?
@@ -58,14 +67,21 @@ const UIController = (function () {
                 console.log("you cant do that!");
             }} 
 
+    const hideForm = () => {
+        const formContainer = document.getElementById('form_container');
+        formContainer.style.display = 'none';
+        
+    }
     const revealBoard = () => {
-        let board = document.getElementById('game_container')
-        board.style.display = inline;
+        const board = document.getElementById('game_container');
+        board.style.display = 'inline';
+        const h3 = document.getElementById('user_instruction');
+        h3.innerHTML = "Click a button to start";
     }
 
     initButtons()
     initForm()
-    return {}
+    return { buttonPress }
 })();
 
 

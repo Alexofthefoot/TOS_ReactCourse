@@ -11,17 +11,17 @@
 
 <body>
     <h1>Tic-Tac-Toe</h1>
-    <h3>Enter your info to start</h3>
+    <h3 id="user_instruction">Enter your info to start</h3>
     <div id="form_container">
         <form id="player_info">
             <label for="playerName">Your name here</label><br>
             <input type="text" id="playerName">
             <br>
-            <input type="radio" id="optionX" name="fav_language" value="X">
-            <label for="html">Choose X</label>
+            <input type="radio" id="optionX" name="symbolChoice" value="X">
+            <label for="optionX">Choose X</label>
             <br>
-            <input type="radio" id="optionO" name="fav_language" value="O">
-            <label for="css">Choose O</label>
+            <input type="radio" id="optionO" name="symbolChoice" value="O">
+            <label for="optionY">Choose O</label>
             <br>
              <button type="submit" id="submit_button">Let's play!</button>
              <p id="user_message">Input missing</p>
