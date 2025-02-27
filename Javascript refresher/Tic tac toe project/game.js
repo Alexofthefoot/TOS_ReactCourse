@@ -21,16 +21,31 @@ const UIController = (function () {
     const initButtons = () => {
                 let buttons = document.querySelectorAll('button');
                 buttons.forEach( button => {
-                button.addEventListener('click', buttonPress);
+                    if (button.id != 'submit_button') { //ignore the form submission button
+                        button.addEventListener('click', buttonPress);
+                    }
+                
                 })}    //private, is called inside the controller
 
     const initForm = () => {
-        let form = document.getElementById(player_info);
+        let form = document.getElementById('player_info');
         form.onsubmit = function(event) {
-            PLAYER.setName(form.name);
-            console.log(PLAYER.getName())
-            // PLAYER.setSymbol();
             event.preventDefault();
+            // vertify form input
+            // if (something) {
+
+            // }
+            // else {
+            //     let warning = document.getElementById('user_message')
+            //     warning.style.display = 'inline';
+
+            // }
+            document.getElementById('user_message').style.display = 'inline';
+            console.log('press')
+            // PLAYER.setName(form.name);
+            // console.log(PLAYER.getName())
+            // PLAYER.setSymbol();
+            // event.preventDefault();
           };
     }
 
@@ -43,7 +58,6 @@ const UIController = (function () {
                 console.log("you cant do that!");
             }} 
 
-            
     const revealBoard = () => {
         let board = document.getElementById('game_container')
         board.style.display = inline;
