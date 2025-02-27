@@ -54,8 +54,6 @@ const UIController = (function () {
             warning.style.display = 'inline';
 
         }
-        document.getElementById('user_message').style.display = 'inline';
-        console.log('press')
     }
 
     const buttonPress = (event) => {    //private, but accessible by the buttons themselves?
@@ -74,7 +72,7 @@ const UIController = (function () {
     }
     const revealBoard = () => {
         const board = document.getElementById('game_container');
-        board.style.display = 'inline';
+        board.style.display = 'flex';
         const h3 = document.getElementById('user_instruction');
         h3.innerHTML = "Click a button to start";
     }
